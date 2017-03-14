@@ -1,6 +1,8 @@
 //Colors
 $grey: #333333;
 $white: #ffffff;
+$lightBlue0: #B5D0E2;
+$lightBlue1: #2099E8;
 
 //Navigation Colors
 $nav-background: $grey;
@@ -8,3 +10,8 @@ $nav-text-color: $white;
 
 //Navigation Font Weights
 $nav-font-bold: bold;
+
+//Clock Variables
+$clock-text-color: $white;
+$clock-bg-color: $lightBlue0;
+$clock-border-color: $lightBlue1;

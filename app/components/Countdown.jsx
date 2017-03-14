@@ -1,11 +1,12 @@
-const React = require('react');
+const React = require('react'),
+    Clock = require('Clock');
 
 let Countdown;
 Countdown = () => {
     "use strict";
     return (
         <div>
-            <h2>Render Brought to you by Countdown.jsx</h2>
+            <Clock totalSeconds={129}/>
         </div>
     )
 };
