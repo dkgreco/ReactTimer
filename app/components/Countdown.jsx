@@ -19,6 +19,10 @@ Countdown = React.createClass({
             countdownStatus: 'started'
         });
     },
+    componentWillUpdate: function(nextProps, nextState) {
+        "use strict";
+        console.log('Props and State Change will cause update');
+    },
     componentDidUpdate: function(prevProps, prevState) {
         //This is called whenever  props or state is changed
         "use strict";
@@ -36,6 +40,20 @@ Countdown = React.createClass({
             }
         }
     },
+    componentWillMount: function() {
+        "use strict";
+        console.log('Countdown.jsx will be mounted to the DOM (ran prior to render of mounted component)');
+    },
+    componentDidMount: function() {
+        "use strict";
+        console.log('Countdown.jsx was mounted to the DOM (ran post render of component into DOM');
+    },
+    componentWillUnmount: function() {
+        "use strict";
+        console.log('Countdown.jsx unmounted from DOM (ran prior to unmount of the rendered component)');
+        clearInterval(this.timer);
+        this.timer = undefined;
+    },
     startTimer: function() {
         "use strict";
         this.timer = setInterval(() => {
@@ -43,6 +61,10 @@ Countdown = React.createClass({
             this.setState({
                 count: countdownInterval >= 0 ? countdownInterval : 0
             });
+
+            if (countdownInterval === 0) {
+                this.setState({countdownStatus:'stopped'});
+            }
         }, 1000);
     },
     handleStatusChange: function(statusUpdate) {

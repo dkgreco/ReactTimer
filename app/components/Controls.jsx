@@ -13,6 +13,10 @@ Controls = React.createClass({
             this.props.onStatusChange(statusUpdate);
         }
     },
+    componentWillReceiveProps: function(nextProps) {
+        "use strict";
+        console.log(`Component will receive new props: ${nextProps.countdownStatus}`);
+    },
     render: function() {
         "use strict";
         let {countdownStatus} = this.props;
