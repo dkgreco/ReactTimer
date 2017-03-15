@@ -21,7 +21,7 @@ Countdown = React.createClass({
     },
     componentWillUpdate: function(nextProps, nextState) {
         "use strict";
-        console.log('Props and State Change will cause update');
+        //console.log('Props and State Change will cause update');
     },
     componentDidUpdate: function(prevProps, prevState) {
         //This is called whenever  props or state is changed
@@ -42,15 +42,15 @@ Countdown = React.createClass({
     },
     componentWillMount: function() {
         "use strict";
-        console.log('Countdown.jsx will be mounted to the DOM (ran prior to render of mounted component)');
+        //console.log('Countdown.jsx will be mounted to the DOM (ran prior to render of mounted component)');
     },
     componentDidMount: function() {
         "use strict";
-        console.log('Countdown.jsx was mounted to the DOM (ran post render of component into DOM');
+        //console.log('Countdown.jsx was mounted to the DOM (ran post render of component into DOM');
     },
     componentWillUnmount: function() {
         "use strict";
-        console.log('Countdown.jsx unmounted from DOM (ran prior to unmount of the rendered component)');
+        //console.log('Countdown.jsx unmounted from DOM (ran prior to unmount of the rendered component)');
         clearInterval(this.timer);
         this.timer = undefined;
     },
@@ -85,6 +85,7 @@ Countdown = React.createClass({
             };
         return (
             <div>
+                <h1 className="page-title">Countdown App</h1>
                 <Clock totalSeconds={count}/>
                 {renderControlArea()}
             </div>

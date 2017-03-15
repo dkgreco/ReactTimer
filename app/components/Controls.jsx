@@ -15,7 +15,7 @@ Controls = React.createClass({
     },
     componentWillReceiveProps: function(nextProps) {
         "use strict";
-        console.log(`Component will receive new props: ${nextProps.countdownStatus}`);
+        //console.log(`Component will receive new props: ${nextProps.countdownStatus}`);
     },
     render: function() {
         "use strict";

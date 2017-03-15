@@ -5,6 +5,7 @@ const React = require('react'),
     TestUtilsLib = require('react-addons-test-utils');
 
 let Controls = require('Controls');
+let emptyFunc = () => {};
 
 describe('Controls Component', () => {
     "use strict";
@@ -14,7 +15,7 @@ describe('Controls Component', () => {
 
     describe('Render', () => {
        it('should render pause when started', () => {
-            let controls = TestUtilsLib.renderIntoDocument(<Controls countdownStatus="started"/>),
+            let controls = TestUtilsLib.renderIntoDocument(<Controls countdownStatus="started" onStatusChange={emptyFunc}/>),
                 $element = $(ReactDOM.findDOMNode(controls));
 
             let $pauseButton = $element.find('button:contains(Pause)');
@@ -24,7 +25,7 @@ describe('Controls Component', () => {
         });
 
        it('should render start when paused', () => {
-            let controls = TestUtilsLib.renderIntoDocument(<Controls countdownStatus="paused"/>),
+            let controls = TestUtilsLib.renderIntoDocument(<Controls countdownStatus="paused" onStatusChange={emptyFunc}/>),
                 $element = $(ReactDOM.findDOMNode(controls));
 
             let $startButton = $element.find('button:contains(Start)');

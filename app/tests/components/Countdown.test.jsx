@@ -43,7 +43,39 @@ describe('Countdown', () => {
                     postProcessExpectedCount = 0;
                 expect(postProcessActualCount).toBe(postProcessExpectedCount);
                 done();
-            }, 3001);
+            }, 2000);
+        });
+
+        it('should not decrement integer when countdownStatus is paused', (done) => {
+            let countdown = TestUtilsLib.renderIntoDocument(<Countdown/>);
+            countdown.handleSetCountdown(5);
+            countdown.handleStatusChange('paused');
+
+            setTimeout(() => {
+                let postProcessActualCount = countdown.state.count,
+                    postProcessExpectedCount = 5,
+                    postProcessActualStatus = countdown.state.countdownStatus,
+                    postProcessExpectedStatus = 'paused';
+                expect(postProcessActualCount).toBe(postProcessExpectedCount);
+                expect(postProcessActualStatus).toBe(postProcessExpectedStatus);
+                done();
+            }, 1005);
+        });
+
+        it('should reset count to 0 and status to stopped when cleared', (done) => {
+            let countdown = TestUtilsLib.renderIntoDocument(<Countdown/>);
+            countdown.handleSetCountdown(5);
+            countdown.handleStatusChange('stopped');
+
+            setTimeout(() => {
+                let postProcessActualCount = countdown.state.count,
+                    postProcessExpectedCount = 0,
+                    postProcessActualStatus = countdown.state.countdownStatus,
+                    postProcessExpectedStatus = 'stopped';
+                expect(postProcessActualCount).toBe(postProcessExpectedCount);
+                expect(postProcessActualStatus).toBe(postProcessExpectedStatus);
+                done();
+            }, 1005);
         });
     });
 });
