@@ -1,10 +1,13 @@
 const React = require('react');
 
 let Controls;
+
 Controls = React.createClass({
     propTypes: {
-        countdownStatus: React.PropTypes.string.isRequired,
-        onStatusChange: React.PropTypes.func.isRequired
+        timerStatus: React.PropTypes.string,
+        countdownStatus: React.PropTypes.string,
+        onStatusChange: React.PropTypes.func.isRequired,
+        componentName: React.PropTypes.string.isRequired
     },
     onStatusChange: function(statusUpdate) {
         "use strict";
@@ -15,18 +18,27 @@ Controls = React.createClass({
     },
     componentWillReceiveProps: function(nextProps) {
         "use strict";
-        //console.log(`Component will receive new props: ${nextProps.countdownStatus}`);
+        //console.log(`Component will receive new props: ${nextProps.toString()}`);
     },
     render: function() {
         "use strict";
-        let {countdownStatus} = this.props;
+        let {componentName, countdownStatus, timerStatus} = this.props;
         let renderStartOrPause = () => {
-            let button;
-            if (countdownStatus === 'started') {
+            let button,
+                pausedState = (countdownStatus === 'paused' || timerStatus === 'paused'),
+                startedState = (countdownStatus === 'started' || timerStatus === 'started'),
+                stoppedState = timerStatus === 'stopped',
+                timer = componentName === 'Timer',
+                countdown = componentName === 'Countdown';
+
+            if (timer && startedState) {
+                button = <button className="button secondary" onClick={this.onStatusChange('paused')}>Stop</button>
+            } else if (((timer || countdown) && pausedState) || (timer && stoppedState)) {
+                button = <button className="button secondary" onClick={this.onStatusChange('started')}>Start</button>;
+            } else if (countdown && startedState) {
                 button = <button className="button secondary" onClick={this.onStatusChange('paused')}>Pause</button>
-            } else if (countdownStatus === 'paused') {
-                button = <button className="button primary" onClick={this.onStatusChange('started')}>Start</button>
             }
+
             return button;
         };
         return (
