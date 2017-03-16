@@ -6,8 +6,8 @@ const React = require('react'),
     Countdown = require('Countdown');
 
 //Load Foundation and Custom CSS
-$('document').foundation();
 require('style!css!sass!applicationStyles');
+$('document').foundation();
 
 ReactDOM.render(
     <Router history={hashHistory}>

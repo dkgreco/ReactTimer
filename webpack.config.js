@@ -47,8 +47,14 @@ module.exports = {
         ]
     },
     sassLoader: {
-      includePaths: [
-          path.resolve(__dirname, './node_modules/foundation-sites/scss')
+        loaders: [
+            {
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader", "sass-loader"]
+            }
+        ],
+        includePaths: [
+          path.resolve(__dirname, './node_modules/foundation-sites/scss/util')
       ]
     },
     devtool: 'cheap-module-eval-source-map'

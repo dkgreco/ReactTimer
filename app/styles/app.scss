@@ -2,8 +2,8 @@
 
 //Foundation
 @import "base/foundation-settings";
-@import "foundation";
-@import foundation-everything;
+@import "../../node_modules/foundation-sites/scss/foundation";
+@include foundation-everything;
 
 //Components
 @import "components/navigation";
